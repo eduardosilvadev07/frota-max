@@ -1,0 +1,67 @@
+/* ENTREGAS.CSS — Tela 2 */
+ 
+.tabs {
+  display:flex; gap:6px; padding:0 16px 14px;
+  overflow-x:auto; scrollbar-width:none; flex-shrink:0;
+}
+.tabs::-webkit-scrollbar { display:none; }
+.tab {
+  padding:7px 16px; border-radius:20px;
+  font-size:12px; font-weight:500; color:var(--text-secondary);
+  background:var(--bg-card); border:1px solid var(--border);
+  white-space:nowrap; cursor:pointer; flex-shrink:0;
+  font-family:'Poppins',sans-serif;
+}
+.tab.active { background:var(--neon-dim); color:var(--neon); border-color:rgba(163,230,53,0.3); }
+ 
+.section-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 16px 12px;
+}
+.sh-left { display:flex; align-items:center; gap:8px; }
+.sh-left span { font-size:14px; font-weight:600; color:var(--text-primary); }
+.badge-circle {
+  background:var(--neon-dim); color:var(--neon);
+  border:1px solid rgba(163,230,53,0.3); border-radius:50%;
+  width:22px; height:22px; font-size:11px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.sort-btn {
+  font-size:11px; color:var(--neon); background:none; border:none;
+  cursor:pointer; display:flex; align-items:center; gap:4px;
+  font-family:'Poppins',sans-serif; font-weight:500;
+}
+.sort-btn svg { width:14px; height:14px; fill:none; stroke:var(--neon); stroke-width:2; }
+ 
+.delivery-cards { padding:0 16px; display:flex; flex-direction:column; gap:12px; }
+ 
+.dc {
+  border-radius:var(--radius-md); border:1px solid var(--border);
+  background:var(--bg-card); overflow:hidden; position:relative;
+}
+.dc-line { position:absolute; left:0; top:0; bottom:0; width:3px; }
+.dc-line.green  { background:linear-gradient(180deg,var(--neon),#84cc16); box-shadow:0 0 8px var(--neon-glow); }
+.dc-line.yellow { background:linear-gradient(180deg,var(--yellow-accent),#d97706); }
+.dc-line.blue   { background:linear-gradient(180deg,var(--blue-accent),#2563eb); }
+ 
+.dc-inner { padding:12px 12px 12px 18px; }
+.dc-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.dc-num { font-size:13px; font-weight:700; color:var(--text-primary); }
+.dc-body { display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center; }
+.dc-route { display:flex; flex-direction:column; gap:4px; }
+.dc-stop { display:flex; align-items:center; gap:8px; }
+.dc-stop-icon {
+  width:26px; height:26px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.dc-stop-icon svg { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:2; }
+.dc-stop-text strong { font-size:12px; font-weight:600; color:var(--text-primary); display:block; }
+.dc-stop-text small  { font-size:10px; color:var(--text-secondary); }
+.dc-arrow-down { color:var(--text-muted); font-size:14px; padding-left:34px; line-height:1.4; }
+.dc-right { text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+.dc-time strong { font-size:16px; font-weight:700; color:var(--text-primary); display:block; }
+.dc-time small  { font-size:9px; color:var(--text-secondary); }
+.dc-dist strong { font-size:13px; font-weight:600; color:var(--text-primary); display:block; }
+.dc-dist small  { font-size:9px; color:var(--text-secondary); }
+.dc-chevron { color:var(--text-muted); font-size:18px; margin-top:2px; }
+ 

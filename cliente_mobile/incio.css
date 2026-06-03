@@ -1,0 +1,343 @@
+/* INCIO.CSS — Estilização Premium Mobile First */
+
+/* Cabeçalho do Usuário */
+.header-user {
+  flex: 1;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary, #f1f5f9);
+}
+
+.welcome-subtitle {
+  font-size: 11px;
+  color: var(--text-secondary, #94a3b8);
+  margin-top: 1px;
+}
+
+.notification-btn {
+  position: relative;
+}
+
+.badge-red {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: var(--red-accent, #ef4444);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #050c18;
+}
+
+/* ── Card do Mapa Premium ── */
+.map-card {
+  margin: 0 16px 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(163, 230, 53, 0.15);
+  height: 250px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08);
+}
+
+.map-image-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.map-overlay-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 20px rgba(5, 12, 24, 0.6);
+  background: linear-gradient(to bottom, transparent 70%, rgba(5, 12, 24, 0.4));
+}
+
+/* ── Card de Próxima Entrega ── */
+.next-delivery {
+  margin: 0 16px 16px;
+  padding: 16px;
+}
+
+.nd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.nd-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #f1f5f9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-green-status {
+  background: rgba(163, 230, 53, 0.15);
+  color: var(--neon, #a3e635);
+  border: 1px solid rgba(163, 230, 53, 0.3);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 0 8px rgba(163, 230, 53, 0.1);
+}
+
+/* Estrutura Grid do Card */
+.nd-grid {
+  display: grid;
+  grid-template-columns: 85px 1px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.nd-time-big {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary, #f1f5f9);
+  line-height: 1;
+}
+
+.nd-date-sub {
+  font-size: 11px;
+  color: var(--text-secondary, #94a3b8);
+  margin-top: 4px;
+}
+
+.nd-divider {
+  background-color: var(--border, rgba(255, 255, 255, 0.08));
+  height: 100%;
+  width: 1px;
+}
+
+/* Timeline Interna */
+.route-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.dots-blue { background-color: var(--blue-accent, #3b82f6); box-shadow: 0 0 6px #3b82f6; }
+.dots-green { background-color: var(--neon, #a3e635); box-shadow: 0 0 6px #a3e635; }
+
+.timeline-text small {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary, #94a3b8);
+  text-transform: uppercase;
+}
+
+.timeline-text strong {
+  display: block;
+  font-size: 12px;
+  color: var(--text-primary, #f1f5f9);
+  font-weight: 500;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Divisores e rodapé interno do card */
+.card-internal-sep {
+  height: 1px;
+  background-color: var(--border, rgba(255, 255, 255, 0.08));
+  margin: 14px 0;
+}
+
+.nd-footer-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-sub-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-sub-item .label {
+  font-size: 11px;
+  color: var(--text-secondary, #94a3b8);
+}
+
+.stat-sub-item .value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #f1f5f9);
+}
+
+/* ── Bloco dos Dois Cards Inferiores ── */
+.bottom-row {
+  display: flex;
+  gap: 12px;
+  margin: 0 16px;
+}
+
+.half-card {
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title-mini {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary, #94a3b8);
+  margin-bottom: 12px;
+}
+
+/* Lista de Entregas */
+.delivery-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.delivery-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.di-icon-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.di-icon-circle.blue { background-color: var(--blue-accent, #3b82f6); }
+.di-icon-circle.yellow { background-color: var(--yellow-accent, #f59e0b); }
+.di-icon-circle.green { background-color: var(--neon, #a3e635); }
+
+.di-label {
+  font-size: 12px;
+  color: var(--text-primary, #f1f5f9);
+  flex: 1;
+}
+
+.di-count {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.blue-badge { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.yellow-badge { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.green-badge { background: rgba(163, 230, 53, 0.15); color: #a3e635; }
+
+/* Indicadores de Desempenho / Combustível */
+.resumo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fuel-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fuel-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.fuel-header .label {
+  color: var(--text-secondary, #94a3b8);
+}
+
+.fuel-header .value-neon {
+  color: var(--neon, #a3e635);
+  font-weight: 700;
+}
+
+.progress-bar-bg {
+  background: rgba(255, 255, 255, 0.05);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.progress-bar-fill-neon {
+  background: linear-gradient(90deg, #82c91e, var(--neon, #a3e635));
+  height: 100%;
+  border-radius: 3px;
+  box-shadow: 0 0 8px var(--neon-glow, rgba(163, 230, 53, 0.4));
+}
+
+.resumo-stats-spacing {
+  margin-top: 2px;
+}
+
+.resumo-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resumo-icon-box {
+  background: rgba(163, 230, 53, 0.08);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(163, 230, 53, 0.15);
+}
+
+.resumo-icon-box svg {
+  width: 14px;
+  height: 14px;
+}
+
+.resumo-text small {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary, #94a3b8);
+}
+
+.resumo-text strong {
+  display: block;
+  font-size: 13px;
+  color: var(--text-primary, #f1f5f9);
+  font-weight: 600;
+}
