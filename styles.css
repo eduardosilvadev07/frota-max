@@ -1,0 +1,376 @@
+/* Reset básico para tirar margens indesejadas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #06101c; /* O azul escuro de fundo que você escolheu */
+    color: #ffffff;
+    height: 100vh;
+}
+
+/* Criando as duas colunas principais: Menu (250px) e Main (o resto da tela) */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Menu fixo em 250px, todo o resto vai para o conteúdo */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Evita barras de rolagem na tela inteira */
+}
+
+/* Estilização do Menu Lateral */
+.menu-lateral {
+    background-color: #091523; /* O azul do menu */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-right: 1px solid #14253d;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px ;
+}
+.menu a {
+    text-decoration: none !important;
+    color: #8fa0b5 !important;
+}
+.menu .active a, 
+.menu a:hover {
+    color: #ffffff !important; 
+}
+.Menu li:hover a, 
+.Menu li.active a,
+.menu li:hover a,
+.menu li.active a {
+    color: #ffffff !important;
+}
+.menu-lateral h1 {
+    font-size: 20px;
+    color: #00e5ff; /* Um tom de ciano para destacar a marca */
+}
+
+
+.menu-lateral h2 {
+    font-size: 12px;
+    color: #8fa0b5;
+}
+
+.navegacao ul {
+    list-style: none;
+}
+
+.navegacao ul li {
+    padding: 12px;
+    color: #8fa0b5;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+.navegacao ul li a {
+    text-decoration: none;
+    color: #8fa0b5; /* Aquela cor cinza/azulada apagada dos itens não selecionados */
+    display: block; /* Faz o link ocupar o botão inteiro para facilitar o clique */
+    width: 100%;
+}
+/* 2. Quando a linha (li) estiver ativa, o link dentro dela fica BRANCO */
+.navegacao ul li.active a {
+    color: #ffffff !important;
+}
+
+/* 3. Se passar o mouse por cima de qualquer item, o texto também acende em branco */
+.navegacao ul li a:hover {
+    color: #ffffff;
+}
+
+/* Item ativo do menu (igual ao azul brilhante da imagem) */
+.navegacao ul li.active, .navegacao ul li:hover {
+    background-color: #00cc2c;
+    color: #fff;
+}
+/* Área do Painel da Direita */
+.conteudo-principal {
+    padding: 30px;
+    height: 100vh;
+    overflow-y: auto; /* Apenas o painel da direita rola se o conteúdo crescer */
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Força a área a usar todo o espaço do '1fr' */
+}
+.topo-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%; /* Corrigido de 160vh para 100% para não quebrar a tela */
+}
+.topo-dashboard h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.topo-dashboard small {
+    color: #8fa0b5;
+}
+
+/* O CORAÇÃO DO LAYOUT: Grade de 3 colunas */
+/* ==========================================================================
+   GRADE PRINCIPAL DO DASHBOARD
+   Para alinhar tudo perfeitamente, usamos uma grade base de 4 colunas.
+   ========================================================================== */
+.grid-dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Divide o espaço restante em 4 partes idênticas */
+    gap: 20px;
+    width: 100%; /* Faz o grid ocupar 100% da largura do painel principal */
+}
+
+/* Estilo padrão de todos os cards */
+.card {
+    background-color: #091523;
+    border: 1px solid #14253d;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card h3 {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   CONFIGURAÇÃO DA LINHA 1 (MAPA E NOTIFICAÇÕES)
+   ========================================================================== */
+
+/* O mapa ocupa 3 colunas das 4 disponíveis */
+.card-mapa {
+    grid-column: span 3; /* O mapa agora ganha muito mais espaço horizontal */
+    display: flex;
+    flex-direction: column;
+    height: 420px; /* Uma altura confortável para visualizar o mapa em telas grandes */
+}
+
+.container-mapa {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+#mapa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* As notificações ocupam a última coluna restante */
+.card-notificacoes {
+    grid-column: span 1;
+    height: 420px; /* Alinhado perfeitamente com a altura do mapa */
+}
+/* ==========================================================================
+   CONFIGURAÇÃO DA LINHA 2 (OS 4 CARDS EM LINHA)
+   ========================================================================== */
+
+/* Cada um ocupa exatamente 1 coluna, alinhando os 4 perfeitamente em uma linha */
+.card-kpi-pequeno {
+    grid-column: span 1;
+    min-height: 180px;
+}
+
+/* ==========================================================================
+   CONFIGURAÇÃO DA LINHA 3 (KPIs GERAIS - LARGURA COMPLETA)
+   ========================================================================== */
+
+/* Faz o card inferior ocupar as 4 colunas do grid (100% do width) */
+.card-kpis-geral {
+    grid-column: span 4;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Cria uma mini grade interna para distribuir os números lado a lado */
+.subgrid-kpis {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) auto; 
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.kpi-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.kpi-item span {
+    font-size: 12px;
+    color: #8fa0b5;
+}
+
+.kpi-item h4 {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Cores das setinhas de subida e descida */
+.subida {
+    color: #00cc2c;
+    font-size: 11px;
+}
+
+.descida {
+    color: #ff3333;
+    font-size: 11px;
+}
+
+/* Estilização básica do botão de relatório */
+.kpi-botao button {
+    background-color: transparent;
+    border: 1px solid #14253d;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.kpi-botao button:hover {
+    background-color: #14253d;
+}
+/* --- SISTEMA DE MAPA INTERATIVO E TOOLTIPS --- */
+
+/* Garante que o container do mapa seja a referência para os caminhões */
+.container-mapa {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.mapa-fundo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container de cada caminhão individual */
+.pin-caminhao {
+    position: absolute;
+    width: 40px;  /* Ajuste o tamanho padrão do quadrado do caminhão aqui */
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+/* Efeito de leve aumento ao passar o mouse no caminhão */
+.pin-caminhao:hover {
+    transform: scale(1.15);
+    z-index: 999; /* Garante que o caminhão focado e seu tooltip fiquem por cima de tudo */
+}
+
+/* Espaço reservado para a sua imagem interna do caminhão */
+.wrapper-img-caminhao {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* Opcional: Adiciona uma leve borda brilhante com base no status */
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+/* Configuração base da Janela Tooltip (Escondida por padrão) */
+.tooltip-caminhao {
+    position: absolute;
+    bottom: 130%; /* Exibe a janela logo acima do ícone do caminhão */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    background-color: #091523; /* Mantendo o padrão azul escuro dos seus cards */
+    border: 1px solid #14253d;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Evita trepidação ao passar o mouse perto */
+}
+
+/* Pequena seta na parte inferior do Tooltip */
+.tooltip-caminhao::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #091523 transparent transparent transparent;
+}
+
+/* MOSTRAR TOOLTIP NO HOVER */
+.pin-caminhao:hover .tooltip-caminhao {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* --- ESTILIZAÇÃO INTERNA DO TOOLTIP --- */
+
+.tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #14253d;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.placa {
+    font-size: 14px;
+    color: #ffffff;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+}
+
+.tooltip-body p {
+    font-size: 12px;
+    color: #8fa0b5;
+    margin: 4px 0;
+    line-height: 1.4;
+}
+
+.tooltip-body p strong {
+    color: #ffffff;
+}
+
+/* Etiquetas (Badges) de Status */
+.status-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Definição de cores baseadas nas classes que você pediu */
+.status-badge.verde { background-color: rgba(0, 204, 44, 0.15); color: #00cc2c; }
+.status-badge.amarelo { background-color: rgba(255, 187, 0, 0.15); color: #ffbb00; }
+.status-badge.vermelho { background-color: rgba(255, 68, 68, 0.15); color: #ff4444; }
+
+/* Borda dos pins baseada no status para te ajudar na identificação */
+.pin-caminhao.verde .wrapper-img-caminhao { border: 2px solid #00cc2c; }
+.pin-caminhao.amarelo .wrapper-img-caminhao { border: 2px solid #ffbb00; }
+.pin-caminhao.vermelho .wrapper-img-caminhao { border: 2px solid #ff4444; }

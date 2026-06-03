@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frota Max - Torre de Controle</title>
+    <link rel="stylesheet" href="torre.css">
+    <link rel="stylesheet" href="tooltips.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <aside class="menu-lateral">
+            <div class="logo">
+                <h1>FROTA MAX</h1>
+                <h2>DASHBOARD</h2>
+            </div>
+            <nav class="navegacao">
+                <ul>
+                    <li><a href="index.html">Início / Dashboard</a></li>
+                    <li class="active"><a href="torre_de_controle.html">Torre de Controle</a></li>
+                    <li><a href="gestao_frestes.html">Gestão de Fretes</a></li>
+                </ul>
+            </nav>
+        </aside>
+ 
+        <main class="conteudo-principal">
+            
+            <header class="topo-dashboard">
+                <h3>Torre de Controle</h3>
+                <div class="infos"></div>
+            </header>
+ 
+            <section class="grid-dashboard">
+                
+                <div class="card-kpi-pequeno">
+                    <span class="kpi-titulo">Total de veículos</span>
+                    <div class="kpi-valor">53</div>
+                </div>
+                <div class="card-kpi-pequeno em-transito">
+                    <span class="kpi-titulo">Em trânsito</span>
+                    <div class="kpi-valor">42</div>
+                </div>
+                <div class="card-kpi-pequeno parados">
+                    <span class="kpi-titulo">Parados</span>
+                    <div class="kpi-valor">8</div>
+                </div>
+                <div class="card-kpi-pequeno manutencao">
+                    <span class="kpi-titulo">Manutenção</span>
+                    <div class="kpi-valor">3</div>
+                </div>
+ 
+                <div class="card card-mapa">
+                    <h3>Mapa da Frota</h3>
+                    <p class="subtitulo-card">Localização em tempo real</p>
+                    <div class="container-mapa">
+                        <img src="ChatGPT Image 22 de mai. de 2026, 13_08_32.png" alt="Mapa" id="mapa">
+ 
+                        <!-- ═══════════════════════════════════════════════════
+                             MARCADORES DE CAMINHÕES — TORRE DE CONTROLE
+                             Reposicione alterando os valores top/left (%)
+                        ═══════════════════════════════════════════════════ -->
+ 
+                        <!-- CAMINHÃO 1 — Verde -->
+                        <div class="pin-caminhao verde" style="top: 19%; left: 25%;">
+                            <div class="pin-info-icon">ℹ</div>
+                            <div class="pin-marker">
+                                <div class="pin-img-wrapper">
+                                    <img src="Seta_emrota.png" alt="" class="pin-img" onerror="this.style.display='none'">
+                                    <div class="pin-img-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                            <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="pin-pulse"></div>
+                            </div>
+                            <div class="tooltip-box tooltip-top">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-veiculo-img">
+                                    <img src="" alt="" onerror="this.style.display='none'">
+                                    <div class="tooltip-img-placeholder">
+                                        <svg viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="30" height="18" rx="3"/><polygon points="32 14 44 14 46 20 46 26 32 26"/><circle cx="10" cy="28" r="4"/><circle cx="38" cy="28" r="4"/></svg>
+                                        <span>Imagem do Veículo</span>
+                                    </div>
+                                </div>
+                                <div class="tooltip-header">
+                                    <span class="tooltip-placa">ABC-1234</span>
+                                    <span class="tooltip-badge verde">● Em Rota</span>
+                                </div>
+                                <div class="tooltip-body">
+                                    <div class="tooltip-row"><span class="tooltip-key">Motorista</span><span class="tooltip-val">João da Silva</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Origem</span><span class="tooltip-val">CD São Paulo</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Destino</span><span class="tooltip-val">Campinas / SP</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Distância restante</span><span class="tooltip-val">99 km</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Chegada prevista</span><span class="tooltip-val">14:30</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Operação</span><span class="tooltip-val">Entrega expressa Cliente X</span></div>
+                                    <div class="tooltip-row tooltip-row-atualizado"><span class="tooltip-key">Última atualização</span><span class="tooltip-val">há 2 min</span></div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- CAMINHÃO 2 — Verde -->
+                        <div class="pin-caminhao verde" style="top: 25%; left: 49%;">
+                            <div class="pin-info-icon">ℹ</div>
+                            <div class="pin-marker">
+                                <div class="pin-img-wrapper">
+                                    <img src="Seta_emrota.png" alt="" class="pin-img" onerror="this.style.display='none'">
+                                    <div class="pin-img-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                                    </div>
+                                </div>
+                                <div class="pin-pulse"></div>
+                            </div>
+                            <div class="tooltip-box tooltip-top">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-veiculo-img">
+                                    <img src="" alt="" onerror="this.style.display='none'">
+                                    <div class="tooltip-img-placeholder"><svg viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="30" height="18" rx="3"/><polygon points="32 14 44 14 46 20 46 26 32 26"/><circle cx="10" cy="28" r="4"/><circle cx="38" cy="28" r="4"/></svg><span>Imagem do Veículo</span></div>
+                                </div>
+                                <div class="tooltip-header">
+                                    <span class="tooltip-placa">JKL-3456</span>
+                                    <span class="tooltip-badge verde">● Em Rota</span>
+                                </div>
+                                <div class="tooltip-body">
+                                    <div class="tooltip-row"><span class="tooltip-key">Motorista</span><span class="tooltip-val">Roberto Alves</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Origem</span><span class="tooltip-val">CD Jundiaí</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Destino</span><span class="tooltip-val">Ribeirão Preto / SP</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Distância restante</span><span class="tooltip-val">145 km</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Chegada prevista</span><span class="tooltip-val">16:45</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Operação</span><span class="tooltip-val">Entrega padrão Cliente W</span></div>
+                                    <div class="tooltip-row tooltip-row-atualizado"><span class="tooltip-key">Última atualização</span><span class="tooltip-val">há 5 min</span></div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- CAMINHÃO 3 — Amarelo -->
+                        <div class="pin-caminhao amarelo" style="top: 55%; left: 50%;">
+                            <div class="pin-info-icon">ℹ</div>
+                            <div class="pin-marker">
+                                <div class="pin-img-wrapper">
+                                    <img src="Processamento.png" alt="" class="pin-img" onerror="this.style.display='none'">
+                                    <div class="pin-img-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                                    </div>
+                                </div>
+                                <div class="pin-pulse"></div>
+                            </div>
+                            <div class="tooltip-box tooltip-top">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-veiculo-img">
+                                    <img src="" alt="" onerror="this.style.display='none'">
+                                    <div class="tooltip-img-placeholder"><svg viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="30" height="18" rx="3"/><polygon points="32 14 44 14 46 20 46 26 32 26"/><circle cx="10" cy="28" r="4"/><circle cx="38" cy="28" r="4"/></svg><span>Imagem do Veículo</span></div>
+                                </div>
+                                <div class="tooltip-header">
+                                    <span class="tooltip-placa">DEF-5678</span>
+                                    <span class="tooltip-badge amarelo">● Em Processamento</span>
+                                </div>
+                                <div class="tooltip-body">
+                                    <div class="tooltip-row"><span class="tooltip-key">Motorista</span><span class="tooltip-val">Carlos Souza</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Origem</span><span class="tooltip-val">CD Guarulhos</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Destino</span><span class="tooltip-val">Santos / SP</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Distância restante</span><span class="tooltip-val">105 km</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Chegada prevista</span><span class="tooltip-val">18:00</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Operação</span><span class="tooltip-val">Aguardando liberação de carga</span></div>
+                                    <div class="tooltip-row tooltip-row-atualizado"><span class="tooltip-key">Última atualização</span><span class="tooltip-val">há 8 min</span></div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- CAMINHÃO 4 — Vermelho -->
+                        <div class="pin-caminhao vermelho" style="top: 70%; left: 75%;">
+                            <div class="pin-info-icon">ℹ</div>
+                            <div class="pin-marker">
+                                <div class="pin-img-wrapper">
+                                    <img src="fora_de_rota.png" alt="" class="pin-img" onerror="this.style.display='none'">
+                                    <div class="pin-img-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                                    </div>
+                                </div>
+                                <div class="pin-pulse"></div>
+                            </div>
+                            <div class="tooltip-box tooltip-top">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-veiculo-img">
+                                    <img src="" alt="" onerror="this.style.display='none'">
+                                    <div class="tooltip-img-placeholder"><svg viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="30" height="18" rx="3"/><polygon points="32 14 44 14 46 20 46 26 32 26"/><circle cx="10" cy="28" r="4"/><circle cx="38" cy="28" r="4"/></svg><span>Imagem do Veículo</span></div>
+                                </div>
+                                <div class="tooltip-header">
+                                    <span class="tooltip-placa">GHI-9012</span>
+                                    <span class="tooltip-badge vermelho">● Fora de Rota</span>
+                                </div>
+                                <div class="tooltip-body">
+                                    <div class="tooltip-row"><span class="tooltip-key">Motorista</span><span class="tooltip-val">Marcos Lima</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Origem</span><span class="tooltip-val">CD São Paulo</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Destino</span><span class="tooltip-val">Rio de Janeiro / RJ</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Distância restante</span><span class="tooltip-val">312 km</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Chegada prevista</span><span class="tooltip-val">Indefinida</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Operação</span><span class="tooltip-val">⚠ Desvio detectado</span></div>
+                                    <div class="tooltip-row tooltip-row-atualizado"><span class="tooltip-key">Última atualização</span><span class="tooltip-val">há 1 min</span></div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- CAMINHÃO 5 — Amarelo -->
+                        <div class="pin-caminhao amarelo" style="top: 29%; left: 75%;">
+                            <div class="pin-info-icon">ℹ</div>
+                            <div class="pin-marker">
+                                <div class="pin-img-wrapper">
+                                    <img src="Processamento.png" alt="" class="pin-img" onerror="this.style.display='none'">
+                                    <div class="pin-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                                </div>
+                                <div class="pin-pulse"></div>
+                            </div>
+                            <div class="tooltip-box tooltip-top">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-veiculo-img">
+                                    <img src="" alt="" onerror="this.style.display='none'">
+                                    <div class="tooltip-img-placeholder"><svg viewBox="0 0 48 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="30" height="18" rx="3"/><polygon points="32 14 44 14 46 20 46 26 32 26"/><circle cx="10" cy="28" r="4"/><circle cx="38" cy="28" r="4"/></svg><span>Imagem do Veículo</span></div>
+                                </div>
+                                <div class="tooltip-header">
+                                    <span class="tooltip-placa">MNO-7890</span>
+                                    <span class="tooltip-badge amarelo">● Em Processamento</span>
+                                </div>
+                                <div class="tooltip-body">
+                                    <div class="tooltip-row"><span class="tooltip-key">Motorista</span><span class="tooltip-val">Paulo Ferreira</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Origem</span><span class="tooltip-val">CD Sorocaba</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Destino</span><span class="tooltip-val">Curitiba / PR</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Distância restante</span><span class="tooltip-val">238 km</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Chegada prevista</span><span class="tooltip-val">21:15</span></div>
+                                    <div class="tooltip-row"><span class="tooltip-key">Operação</span><span class="tooltip-val">Parado em posto de combustível</span></div>
+                                    <div class="tooltip-row tooltip-row-atualizado"><span class="tooltip-key">Última atualização</span><span class="tooltip-val">há 3 min</span></div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                    </div><!-- fim container-mapa -->
+                </div>
+ 
+                <div class="card card-atividades">
+                    <h3>Atividades em Tempo Real</h3>
+                    <div class="lista-atividades">
+                        <p class="placeholder-texto">Nenhuma atividade registrada no momento.</p>
+                    </div>
+                </div>
+ 
+                <div class="card card-destaque">
+                    <h3>Veículos em Destaque</h3>
+                    <p class="subtitulo-card">Situação atual dos principais veículos</p>
+                </div>
+ 
+                <div class="card card-resumo">
+                    <h3>Resumo da Frota</h3>
+                    <p class="subtitulo-card">Panorama geral da operação</p>
+                </div>
+ 
+            </section>
+        </main>
+    </div>
+ 
+    <script>
+    // ═══════════════════════════════════════════════════════════════
+    // SISTEMA DE TOOLTIP — Portal para o <body> (Torre de Controle)
+    // Resolve overflow:hidden e z-index de containers pai.
+    // ═══════════════════════════════════════════════════════════════
+
+    let overlayAtivo = null;
+
+    function fecharOverlay() {
+        if (overlayAtivo) {
+            overlayAtivo.classList.remove('visible');
+            setTimeout(() => {
+                if (overlayAtivo && overlayAtivo.parentNode) {
+                    overlayAtivo.parentNode.removeChild(overlayAtivo);
+                }
+                overlayAtivo = null;
+            }, 250);
+        }
+    }
+
+    function abrirOverlay(pin) {
+        if (overlayAtivo && overlayAtivo._pinOrigem === pin) return;
+
+        fecharOverlay();
+
+        const boxOriginal = pin.querySelector('.tooltip-box');
+        const overlay = document.createElement('div');
+        overlay.className = 'tooltip-overlay';
+        overlay._pinOrigem = pin;
+
+        overlay.innerHTML = boxOriginal.innerHTML;
+
+        const setaAntiga = overlay.querySelector('.tooltip-arrow');
+        if (setaAntiga) setaAntiga.remove();
+
+        const seta = document.createElement('div');
+        seta.className = 'tooltip-arrow-overlay';
+        overlay.appendChild(seta);
+
+        document.body.appendChild(overlay);
+        overlayAtivo = overlay;
+
+        posicionarOverlay(overlay, pin, seta);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => overlay.classList.add('visible'));
+        });
+
+        overlay.addEventListener('mouseleave', () => fecharOverlay());
+    }
+
+    function posicionarOverlay(overlay, pin, seta) {
+        const rect = pin.getBoundingClientRect();
+        const pinCentroX = rect.left + rect.width / 2;
+        const pinCentroY = rect.top;
+
+        const TOOLTIP_H = 360;
+        const GAP = 14;
+
+        const espacoAcima = pinCentroY;
+        const abrirAcima = espacoAcima > TOOLTIP_H + GAP;
+
+        if (abrirAcima) {
+            overlay.style.top  = (pinCentroY - TOOLTIP_H - GAP) + 'px';
+            overlay.style.left = pinCentroX + 'px';
+            seta.classList.add('arrow-top');
+        } else {
+            overlay.style.top  = (rect.bottom + GAP) + 'px';
+            overlay.style.left = pinCentroX + 'px';
+            seta.classList.add('arrow-bottom');
+        }
+
+        requestAnimationFrame(() => {
+            const oRect = overlay.getBoundingClientRect();
+            if (oRect.right > window.innerWidth - 8) {
+                overlay.style.left = (pinCentroX - (oRect.right - window.innerWidth + 8)) + 'px';
+            }
+            if (oRect.left < 8) {
+                overlay.style.left = (8 + 135) + 'px';
+            }
+        });
+    }
+
+    document.querySelectorAll('.pin-caminhao').forEach(pin => {
+        const icon = pin.querySelector('.pin-info-icon');
+
+        icon.addEventListener('mouseenter', () => abrirOverlay(pin));
+        icon.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                if (overlayAtivo && !overlayAtivo.matches(':hover')) fecharOverlay();
+            }, 120);
+        });
+
+        icon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (overlayAtivo && overlayAtivo._pinOrigem === pin) {
+                fecharOverlay();
+            } else {
+                abrirOverlay(pin);
+            }
+        });
+    });
+
+    document.addEventListener('click', () => fecharOverlay());
+
+    window.addEventListener('resize', () => {
+        if (overlayAtivo) {
+            const pin = overlayAtivo._pinOrigem;
+            const seta = overlayAtivo.querySelector('.tooltip-arrow-overlay');
+            if (pin && seta) posicionarOverlay(overlayAtivo, pin, seta);
+        }
+    });
+    </script>
+</body>
+</html>

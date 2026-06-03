@@ -1,0 +1,332 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOOLTIPS.CSS — Sistema de marcadores interativos de caminhões
+   Usado em: index.html  e  torre_de_controle.html
+   NÃO modifica styles.css nem torre.css
+═══════════════════════════════════════════════════════════════ */
+ 
+/* ── Ancoragem do pin no mapa ── */
+.pin-caminhao {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 10;
+    /* Centraliza o pin no ponto exato (top/left aponta para o centro do ícone) */
+    transform: translate(-50%, -50%);
+}
+ 
+/* ── Ícone ℹ disparador ── */
+.pin-info-icon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(20, 37, 61, 0.95);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #8fa0b5;
+    font-size: 11px;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    font-family: serif;
+    line-height: 1;
+}
+.pin-info-icon:hover {
+    background: rgba(30, 60, 100, 0.98);
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.5);
+}
+ 
+/* ── Marcador visual do caminhão ── */
+.pin-marker {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+/* Efeito pulsante ao redor do pin */
+.pin-pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    opacity: 0.35;
+    animation: pulse-ring 2s ease-out infinite;
+}
+.pin-caminhao.verde   .pin-pulse { border: 2px solid #00cc2c; }
+.pin-caminhao.amarelo .pin-pulse { border: 2px solid #ffbb00; }
+.pin-caminhao.vermelho .pin-pulse { border: 2px solid #ff4444; }
+ 
+@keyframes pulse-ring {
+    0%   { transform: scale(0.85); opacity: 0.5; }
+    70%  { transform: scale(1.4);  opacity: 0; }
+    100% { transform: scale(0.85); opacity: 0; }
+}
+ 
+/* Wrapper da imagem/ícone do caminhão */
+.pin-img-wrapper {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(9, 21, 35, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s;
+}
+.pin-caminhao:hover .pin-img-wrapper { transform: scale(1.12); }
+ 
+/* Bordas coloridas por status */
+.pin-caminhao.verde   .pin-img-wrapper { border: 2px solid #00cc2c; box-shadow: 0 0 8px rgba(0,204,44,0.5); }
+.pin-caminhao.amarelo .pin-img-wrapper { border: 2px solid #ffbb00; box-shadow: 0 0 8px rgba(255,187,0,0.5); }
+.pin-caminhao.vermelho .pin-img-wrapper { border: 2px solid #ff4444; box-shadow: 0 0 8px rgba(255,68,68,0.5); }
+ 
+/* Imagem real do caminhão (quando inserida) */
+.pin-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+ 
+/* Placeholder (ícone SVG) quando sem imagem */
+.pin-img-placeholder {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pin-caminhao.verde   .pin-img-placeholder { color: #00cc2c; }
+.pin-caminhao.amarelo .pin-img-placeholder { color: #ffbb00; }
+.pin-caminhao.vermelho .pin-img-placeholder { color: #ff4444; }
+.pin-img-placeholder svg { width: 100%; height: 100%; }
+ 
+/* ══════════════════════════════════════════
+   TOOLTIP BOX
+══════════════════════════════════════════ */
+.tooltip-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 270px;
+    /* Glassmorphism premium */
+    background: rgba(9, 21, 35, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.04) inset;
+    z-index: 999;
+    /* Escondido por padrão */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+ 
+/* Posição acima do pin */
+.tooltip-top {
+    bottom: calc(100% + 14px);
+    transform: translateX(-50%) translateY(6px);
+}
+.tooltip-top.visible {
+    transform: translateX(-50%) translateY(0);
+}
+ 
+/* Posição abaixo do pin (auto-invertido quando próximo ao topo) */
+.tooltip-bottom {
+    top: calc(100% + 14px);
+    transform: translateX(-50%) translateY(-6px);
+}
+.tooltip-bottom.visible {
+    transform: translateX(-50%) translateY(0);
+}
+ 
+/* Visível */
+.tooltip-box.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ══════════════════════════════════════════
+   TOOLTIP OVERLAY — modo portal (anexado ao body)
+   Sobrepõe qualquer container, incluindo overflow:hidden
+══════════════════════════════════════════ */
+.tooltip-overlay {
+    position: fixed;           /* fixo na viewport, fora de qualquer stacking context */
+    width: 270px;
+    background: rgba(9, 21, 35, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.7),
+        0 0 0 1px rgba(255,255,255,0.04) inset;
+    z-index: 99999;            /* acima de absolutamente tudo */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, visibility 0.22s;
+    /* margin-left negativo para centralizar horizontalmente no pin */
+    margin-left: -135px;
+}
+
+.tooltip-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Seta do overlay (aponta para baixo, em direção ao pin) */
+.tooltip-overlay .tooltip-arrow-overlay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+}
+.tooltip-overlay .tooltip-arrow-overlay.arrow-top {
+    /* seta embaixo do tooltip (pin está abaixo) */
+    bottom: -7px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid rgba(9, 21, 35, 0.97);
+}
+.tooltip-overlay .tooltip-arrow-overlay.arrow-bottom {
+    /* seta em cima do tooltip (pin está acima) */
+    top: -7px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid rgba(9, 21, 35, 0.97);
+}
+ 
+/* Seta */
+.tooltip-arrow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+}
+.tooltip-top .tooltip-arrow {
+    bottom: -7px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid rgba(9,21,35,0.95);
+}
+.tooltip-bottom .tooltip-arrow {
+    top: -7px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid rgba(9,21,35,0.95);
+}
+ 
+/* ── Imagem do veículo (slot) ── */
+.tooltip-veiculo-img {
+    width: 100%;
+    height: 90px;
+    border-radius: 11px 11px 0 0;
+    overflow: hidden;
+    background: rgba(5, 15, 28, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+}
+.tooltip-veiculo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 11px 11px 0 0;
+    transition: transform 0.3s ease;
+}
+.tooltip-veiculo-img:hover img { transform: scale(1.04); }
+.tooltip-img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #3d5570;
+}
+.tooltip-img-placeholder svg { width: 52px; height: auto; stroke: #2a3f58; }
+.tooltip-img-placeholder span { font-size: 10px; color: #3d5570; letter-spacing: 0.5px; }
+ 
+/* ── Header do tooltip ── */
+.tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tooltip-placa {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+.tooltip-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.tooltip-badge.verde   { background: rgba(0,204,44,0.12);  color: #00cc2c;  border: 1px solid rgba(0,204,44,0.3); }
+.tooltip-badge.amarelo { background: rgba(255,187,0,0.12); color: #ffbb00;  border: 1px solid rgba(255,187,0,0.3); }
+.tooltip-badge.vermelho{ background: rgba(255,68,68,0.12); color: #ff4444;  border: 1px solid rgba(255,68,68,0.3); }
+ 
+/* ── Corpo do tooltip ── */
+.tooltip-body {
+    padding: 8px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+}
+.tooltip-key {
+    font-size: 10px;
+    color: #4f6885;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.tooltip-val {
+    font-size: 11px;
+    color: #c8d8ea;
+    text-align: right;
+    font-weight: 500;
+}
+.tooltip-row-atualizado {
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.tooltip-row-atualizado .tooltip-key,
+.tooltip-row-atualizado .tooltip-val {
+    font-size: 10px;
+    color: #354d64;
+}

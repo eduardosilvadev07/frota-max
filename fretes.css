@@ -1,0 +1,272 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #06101c;
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+}
+
+/* ==========================================================================
+   2. MENU LATERAL
+   ========================================================================== */
+.menu-lateral {
+    background-color: #091523;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-right: 1px solid #14253d;
+}
+
+.menu-lateral h1 {
+    font-size: 20px;
+    color: #00e5ff;
+}
+
+.menu-lateral h2 {
+    font-size: 11px;
+    color: #8fa0b5;
+    letter-spacing: 1px;
+}
+
+.navegacao ul {
+    list-style: none;
+}
+
+.navegacao ul li {
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+
+.navegacao ul li a {
+    text-decoration: none;
+    color: #8fa0b5;
+    display: block;
+    padding: 12px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.navegacao ul li.active {
+    background-color: #0052cc;
+}
+
+.navegacao ul li.active a,
+.navegacao ul li a:hover {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   3. CONTEÚDO PRINCIPAL (MAIN)
+   ========================================================================== */
+.conteudo-principal {
+    padding: 25px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.topo-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.subtitulo-pagina {
+    font-size: 13px;
+    color: #8fa0b5;
+    margin-top: 4px;
+}
+
+.btn-novo-frete {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-novo-frete:hover {
+    background-color: #0041a3;
+}
+
+/* ==========================================================================
+   4. GRADE DO DASHBOARD (CSS GRID)
+   ========================================================================== */
+.grid-dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    width: 100%;
+}
+
+.card {
+    background-color: #091523;
+    border: 1px solid #14253d;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* KPIs SUPERIORES */
+.card-kpi-pequeno {
+    background-color: #091523;
+    border: 1px solid #14253d;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.kpi-titulo {
+    font-size: 12px;
+    color: #8fa0b5;
+}
+
+.kpi-valor {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.concluidos .kpi-valor { color: #00cc2c; }
+.atrasados .kpi-valor { color: #ff4444; }
+.receita .kpi-valor { color: #00e5ff; }
+
+/* POSICIONAMENTO DA GRADE */
+.card-tabela-fretes {
+    grid-column: span 3;
+    grid-row: span 2;
+    min-height: 520px;
+}
+
+.card-roteirizacao {
+    grid-column: span 1;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-detalhes-custo {
+    grid-column: span 1;
+    height: 200px;
+}
+
+/* ==========================================================================
+   5. COMPONENTES INTERNOS
+   ========================================================================== */
+.cabecalho-tabela {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.busca-frete {
+    background-color: #06101c;
+    border: 1px solid #14253d;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 6px;
+    width: 280px;
+    outline: none;
+}
+
+.tabela-fretes {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-fretes th, 
+.tabela-fretes td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #14253d;
+    font-size: 14px;
+}
+
+.tabela-fretes th {
+    color: #8fa0b5;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+.badge.em-rota { background-color: rgba(0, 204, 44, 0.15); color: #00cc2c; }
+.badge.aguardando { background-color: rgba(255, 187, 0, 0.15); color: #ffbb00; }
+.badge.atrasado { background-color: rgba(255, 68, 68, 0.15); color: #ff4444; }
+
+.mini-mapa {
+    flex: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 12px 0;
+    background-color: #06101c;
+    min-height: 120px;
+}
+
+.mini-mapa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-frete-selecionado h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.info-frete-selecionado p {
+    font-size: 12px;
+    color: #8fa0b5;
+}
+
+.lista-custos {
+    margin-top: 15px;
+}
+
+.custo-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #8fa0b5;
+}
+
+.custo-item.total {
+    border-top: 1px solid #14253d;
+    padding-top: 12px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+}

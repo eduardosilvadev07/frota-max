@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frota Max - Gestão de Fretes</title>
+    <link rel="stylesheet" href="fretes.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="menu-lateral">
+            <div class="logo">
+                <h1>FROTA MAX</h1>
+                <h2>DASHBOARD</h2>
+            </div>
+            <nav class="navegacao">
+                <ul>
+                    <li><a href="index.html">Início / Dashboard</a></li>
+                    <li><a href="torre_de_controle.html">Torre de Controle</a></li>
+                    <li class="active"><a href="gestao_frestes.html">Gestão de Fretes</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            
+            <header class="topo-dashboard">
+                <div class="titulo-pagina">
+                    <h3>Gestão de Fretes</h3>
+                    <p class="subtitulo-pagina">Gerencie, acompanhe e otimize seus fretes em tempo real.</p>
+                </div>
+                <button class="btn-novo-frete">+ Novo Frete</button>
+            </header>
+
+            <section class="grid-dashboard">
+                
+                <div class="card-kpi-pequeno">
+                    <span class="kpi-titulo">Fretes Ativos</span>
+                    <div class="kpi-valor">156</div>
+                </div>
+                <div class="card-kpi-pequeno concluidos">
+                    <span class="kpi-titulo">Fretes Concluídos</span>
+                    <div class="kpi-valor">142</div>
+                </div>
+                <div class="card-kpi-pequeno atrasados">
+                    <span class="kpi-titulo">Fretes Atrasados</span>
+                    <div class="kpi-valor">14</div>
+                </div>
+                <div class="card-kpi-pequeno receita">
+                    <span class="kpi-titulo">Receita do Dia</span>
+                    <div class="kpi-valor">R$ 198.450,30</div>
+                </div>
+
+                <div class="card card-tabela-fretes">
+                    <div class="cabecalho-tabela">
+                        <h3>Lista de Fretes</h3>
+                        <input type="text" placeholder="Buscar por pedido..." class="busca-frete">
+                    </div>
+                    
+                    <table class="tabela-fretes">
+                        <thead>
+                            <tr>
+                                <th>Pedido</th>
+                                <th>Cliente</th>
+                                <th>Motorista</th>
+                                <th>Origem → Destino</th>
+                                <th>Status</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#14587</strong></td>
+                                <td>Cliente X</td>
+                                <td>João da Silva</td>
+                                <td>CD São Paulo → Campinas / SP</td>
+                                <td><span class="badge em-rota">Em rota</span></td>
+                                <td>R$ 4.800,00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>#14588</strong></td>
+                                <td>Cliente Y</td>
+                                <td>Marcos Lima</td>
+                                <td>CD São Paulo → Santos / SP</td>
+                                <td><span class="badge aguardando">Aguardando</span></td>
+                                <td>R$ 3.200,00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>#14589</strong></td>
+                                <td>Cliente Z</td>
+                                <td>Carlos Souza</td>
+                                <td>CD São Paulo → Rio de Janeiro / RJ</td>
+                                <td><span class="badge atrasado">Atrasado</span></td>
+                                <td>R$ 7.600,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-roteirizacao">
+                    <h3>Roteirização e Mapa</h3>
+                    <div class="mini-mapa">
+                        <img src="ChatGPT Image 22 de mai. de 2026, 13_08_32.png" alt="Mapa de Rota">
+                    </div>
+                    <div class="info-frete-selecionado">
+                        <h4>Frete #14587 <span class="badge em-rota">Em rota</span></h4>
+                        <p><strong>Motorista:</strong> João da Silva</p>
+                        <p><strong>Previsão:</strong> 14:30</p>
+                    </div>
+                </div>
+
+                <div class="card card-detalhes-custo">
+                    <h3>Custo Estimado do Frete</h3>
+                    <div class="lista-custos">
+                        <div class="custo-item"><span>Combustível</span> <strong>R$ 1.250,00</strong></div>
+                        <div class="custo-item"><span>Pedágios</span> <strong>R$ 320,00</strong></div>
+                        <div class="custo-item total"><span>Custo Total</span> <strong>R$ 1.570,00</strong></div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const links = document.querySelectorAll('.navegacao li');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
