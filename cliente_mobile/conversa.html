@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>TMS — Conversa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="mensagens.css">
+</head>
+<body>
+<div class="screen chat-screen">
+ 
+  <!-- Header da Conversa -->
+  <div class="chat-header">
+    <a href="mensagens.html" class="icon-btn back-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <div class="chat-contact">
+      <div class="chat-avatar-wrap">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <span class="online-dot"></span>
+      </div>
+      <div class="chat-contact-info">
+        <span class="chat-name">Supervisor Júnior</span>
+        <span class="chat-status">
+          <span class="status-pulse"></span>
+          Online
+        </span>
+      </div>
+    </div>
+    <div class="icon-btn">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+    </div>
+  </div>
+ 
+  <!-- Área de mensagens -->
+  <div class="chat-messages">
+ 
+    <!-- Separador de data -->
+    <div class="date-divider">
+      <span>Hoje, 03 de junho</span>
+    </div>
+ 
+    <!-- Mensagem recebida -->
+    <div class="msg-row received">
+      <div class="msg-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <div class="msg-bubble received-bubble">
+        <p>O cliente está no aguardo.</p>
+        <span class="msg-time">14:35</span>
+      </div>
+    </div>
+ 
+  </div><!-- fim chat-messages -->
+ 
+  <!-- Campo de digitação -->
+  <div class="chat-input-bar">
+    <div class="chat-input-wrap">
+      <input type="text" class="chat-input" placeholder="Digite uma mensagem...">
+      <button class="emoji-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M8 13s1.5 2 4 2 4-2 4-2"/>
+          <line x1="9" y1="9" x2="9.01" y2="9"/>
+          <line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+      </button>
+    </div>
+    <button class="send-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+ 
+</div><!-- fim screen -->
+</body>
+</html>
+ 
