@@ -374,3 +374,254 @@ body {
 .pin-caminhao.verde .wrapper-img-caminhao { border: 2px solid #00cc2c; }
 .pin-caminhao.amarelo .wrapper-img-caminhao { border: 2px solid #ffbb00; }
 .pin-caminhao.vermelho .wrapper-img-caminhao { border: 2px solid #ff4444; }
+/* ==========================================================================
+   CARDS KPI — Status da Frota / Desempenho / Pedidos / Custos
+   ========================================================================== */
+ 
+.card-kpi-pequeno {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 220px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-kpi-pequeno:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+}
+ 
+/* ── Header interno do card ── */
+.kpi-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.kpi-card-titulo {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 3px 0;
+}
+.kpi-card-subtitulo {
+    font-size: 11px;
+    color: #8fa0b5;
+    margin: 0;
+}
+.kpi-card-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.kpi-card-icon svg { width: 18px; height: 18px; }
+.icon-azul   { background: rgba(59,155,255,0.15);  color: #3b9bff; }
+.icon-verde  { background: rgba(0,204,44,0.15);    color: #00cc2c; }
+.icon-roxo   { background: rgba(160,100,255,0.15); color: #a064ff; }
+ 
+/* ── Botão inferior dos cards ── */
+.kpi-card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    padding: 9px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid #14253d;
+    border-radius: 8px;
+    color: #8fa0b5;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    margin-top: auto;
+}
+.kpi-card-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.kpi-card-btn:hover {
+    background: rgba(0,204,44,0.08);
+    border-color: rgba(0,204,44,0.3);
+    color: #00cc2c;
+}
+ 
+/* ══════════════════════════════════
+   CARD 1 — STATUS DA FROTA
+══════════════════════════════════ */
+.frota-indicadores {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex: 1;
+}
+.frota-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+}
+.frota-num {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+}
+.frota-num.azul    { color: #3b9bff; text-shadow: 0 0 18px rgba(59,155,255,0.4); }
+.frota-num.amarelo { color: #ffbb00; text-shadow: 0 0 18px rgba(255,187,0,0.4); }
+.frota-num.vermelho{ color: #ff4444; text-shadow: 0 0 18px rgba(255,68,68,0.4); }
+.frota-label {
+    font-size: 11px;
+    color: #8fa0b5;
+    text-align: center;
+}
+.frota-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 2px;
+}
+.azul-dot    { background: #3b9bff; box-shadow: 0 0 6px rgba(59,155,255,0.6); }
+.amarelo-dot { background: #ffbb00; box-shadow: 0 0 6px rgba(255,187,0,0.6); }
+.vermelho-dot{ background: #ff4444; box-shadow: 0 0 6px rgba(255,68,68,0.6); }
+.frota-divisor {
+    width: 1px;
+    height: 50px;
+    background: #14253d;
+    flex-shrink: 0;
+}
+ 
+/* ══════════════════════════════════
+   CARD 2 — DESEMPENHO DE ENTREGAS
+══════════════════════════════════ */
+.desempenho-corpo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+.donut-wrap {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+}
+.donut-svg { width: 100%; height: 100%; }
+.desempenho-legenda {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+.leg-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.leg-cor {
+    width: 10px; height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+.leg-nome {
+    font-size: 12px;
+    color: #8fa0b5;
+    flex: 1;
+}
+.leg-pct {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+}
+ 
+/* ══════════════════════════════════
+   CARD 3 — PEDIDOS DO DIA
+══════════════════════════════════ */
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+.pedido-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid #14253d;
+    border-radius: 8px;
+}
+.pedido-icone {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.pedido-icone svg { width: 16px; height: 16px; }
+.verde-bg   { background: rgba(0,204,44,0.12); }
+.azul-bg    { background: rgba(59,155,255,0.12); }
+.amarelo-bg { background: rgba(255,187,0,0.12); }
+.pedido-info {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+.pedido-qty {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+.pedido-qty.verde  { color: #00cc2c; }
+.pedido-qty.azul   { color: #3b9bff; }
+.pedido-qty.amarelo{ color: #ffbb00; }
+.pedido-desc {
+    font-size: 12px;
+    color: #8fa0b5;
+}
+ 
+/* ══════════════════════════════════
+   CARD 4 — CUSTOS DO DIA
+══════════════════════════════════ */
+.custo-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00cc2c;
+    text-shadow: 0 0 20px rgba(0,204,44,0.35);
+    letter-spacing: -0.5px;
+}
+.custo-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+.custo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid #14253d;
+    border-radius: 8px;
+}
+.custo-icone {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.custo-icone svg { width: 15px; height: 15px; }
+.custo-detalhe {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.custo-nome  { font-size: 11px; color: #8fa0b5; }
+.custo-valor { font-size: 13px; font-weight: 600; color: #ffffff; }
+ 
