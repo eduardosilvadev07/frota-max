@@ -48,7 +48,7 @@
                 ═══════════════════════════════════════════════════ -->
  
                 <!-- CAMINHÃO VERDE — Em Rota -->
-                <div class="pin-caminhao verde" style="top: 21%; left: 22%;">
+                <div class="pin-caminhao verde" style="top: 28%; left: 22%;">
                     <!-- Ícone de informações (dispara o tooltip) -->
                     <div class="pin-info-icon">ℹ</div>
  
@@ -122,7 +122,7 @@
                 </div>
  
                 <!-- CAMINHÃO AMARELO — Em Processamento -->
-                <div class="pin-caminhao amarelo" style="top: 30%; left: 76%;">
+                <div class="pin-caminhao amarelo" style="top: 48%; left: 52%;">
                     <div class="pin-info-icon">ℹ</div>
  
                     <div class="pin-marker">
@@ -191,7 +191,7 @@
                 </div>
  
                 <!-- CAMINHÃO VERMELHO — Fora de Rota -->
-                <div class="pin-caminhao vermelho" style="top: 70%; left: 75%;">
+                <div class="pin-caminhao vermelho" style="top: 65%; left: 70%;">
                     <div class="pin-info-icon">ℹ</div>
  
                     <div class="pin-marker">
@@ -264,23 +264,179 @@
  
         <div class="card card-notificacoes">
             <h3>Alertas e Notificações</h3>
-            <p>PEDIDO CANCELADO - JOÃO </p>
         </div>
  
-        <div class="card card-kpi-pequeno">
-            <h3>Status da Frota</h3>
+        <!-- ═══════════ CARD 1 — STATUS DA FROTA ═══════════ -->
+        <div class="card card-kpi-pequeno card-frota">
+            <div class="kpi-card-header">
+                <div>
+                    <h3 class="kpi-card-titulo">Status da Frota</h3>
+                    <p class="kpi-card-subtitulo">Total de veículos</p>
+                </div>
+                <div class="kpi-card-icon icon-azul">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+            </div>
+            <div class="frota-indicadores">
+                <div class="frota-item">
+                    <span class="frota-num azul">42</span>
+                    <span class="frota-label">Em trânsito</span>
+                    <span class="frota-dot azul-dot"></span>
+                </div>
+                <div class="frota-divisor"></div>
+                <div class="frota-item">
+                    <span class="frota-num amarelo">8</span>
+                    <span class="frota-label">Parados</span>
+                    <span class="frota-dot amarelo-dot"></span>
+                </div>
+                <div class="frota-divisor"></div>
+                <div class="frota-item">
+                    <span class="frota-num vermelho">3</span>
+                    <span class="frota-label">Manutenção</span>
+                    <span class="frota-dot vermelho-dot"></span>
+                </div>
+            </div>
+            <button class="kpi-card-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0A9 9 0 0 0 3 12z"/><path d="M12 8v4l3 3"/></svg>
+                Filtrar no mapa
+            </button>
         </div>
- 
-        <div class="card card-kpi-pequeno">
-            <h3>Desempenho de Entregas</h3>
+
+        <!-- ═══════════ CARD 2 — DESEMPENHO DE ENTREGAS ═══════════ -->
+        <div class="card card-kpi-pequeno card-desempenho">
+            <div class="kpi-card-header">
+                <div>
+                    <h3 class="kpi-card-titulo">Desempenho de Entregas</h3>
+                    <p class="kpi-card-subtitulo">Entregas realizadas</p>
+                </div>
+                <div class="kpi-card-icon icon-verde">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+            </div>
+            <div class="desempenho-corpo">
+                <!-- Donut chart via SVG puro -->
+                <div class="donut-wrap">
+                    <svg class="donut-svg" viewBox="0 0 80 80">
+                        <circle class="donut-bg" cx="40" cy="40" r="30" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+                        <!-- Vermelho (extraviadas 2%) — stroke-dasharray: circunferência = 2πr ≈ 188.5 -->
+                        <circle class="donut-seg" cx="40" cy="40" r="30" fill="none" stroke="#ff4444" stroke-width="10"
+                            stroke-dasharray="3.77 184.73" stroke-dashoffset="0" transform="rotate(-90 40 40)"/>
+                        <!-- Amarelo (atrasadas 4%) — offset após vermelho -->
+                        <circle class="donut-seg" cx="40" cy="40" r="30" fill="none" stroke="#ffbb00" stroke-width="10"
+                            stroke-dasharray="7.54 180.96" stroke-dashoffset="-3.77" transform="rotate(-90 40 40)"/>
+                        <!-- Verde (no prazo 94%) — offset após os dois -->
+                        <circle class="donut-seg" cx="40" cy="40" r="30" fill="none" stroke="#00cc2c" stroke-width="10"
+                            stroke-dasharray="177.19 11.31" stroke-dashoffset="-11.31" transform="rotate(-90 40 40)"/>
+                        <text x="40" y="37" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="Segoe UI">94%</text>
+                        <text x="40" y="48" text-anchor="middle" fill="#8fa0b5" font-size="6" font-family="Segoe UI">No prazo</text>
+                    </svg>
+                </div>
+                <div class="desempenho-legenda">
+                    <div class="leg-item">
+                        <span class="leg-cor" style="background:#00cc2c;"></span>
+                        <span class="leg-nome">No prazo</span>
+                        <span class="leg-pct">94%</span>
+                    </div>
+                    <div class="leg-item">
+                        <span class="leg-cor" style="background:#ffbb00;"></span>
+                        <span class="leg-nome">Atrasadas</span>
+                        <span class="leg-pct">4%</span>
+                    </div>
+                    <div class="leg-item">
+                        <span class="leg-cor" style="background:#ff4444;"></span>
+                        <span class="leg-nome">Extraviadas</span>
+                        <span class="leg-pct">2%</span>
+                    </div>
+                </div>
+            </div>
+            <button class="kpi-card-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Ver alertas de atraso
+            </button>
         </div>
- 
-        <div class="card card-kpi-pequeno">
-            <h3>Pedidos do Dia</h3>
+
+        <!-- ═══════════ CARD 3 — PEDIDOS DO DIA ═══════════ -->
+        <div class="card card-kpi-pequeno card-pedidos">
+            <div class="kpi-card-header">
+                <div>
+                    <h3 class="kpi-card-titulo">Pedidos do Dia</h3>
+                    <p class="kpi-card-subtitulo">Visão geral dos pedidos</p>
+                </div>
+                <div class="kpi-card-icon icon-roxo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+            </div>
+            <div class="pedidos-lista">
+                <div class="pedido-item">
+                    <div class="pedido-icone verde-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#00cc2c" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="pedido-info">
+                        <span class="pedido-qty verde">156</span>
+                        <span class="pedido-desc">Concluídos</span>
+                    </div>
+                </div>
+                <div class="pedido-item">
+                    <div class="pedido-icone azul-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3b9bff" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="pedido-info">
+                        <span class="pedido-qty azul">23</span>
+                        <span class="pedido-desc">Em andamento</span>
+                    </div>
+                </div>
+                <div class="pedido-item">
+                    <div class="pedido-icone amarelo-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffbb00" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <div class="pedido-info">
+                        <span class="pedido-qty amarelo">12</span>
+                        <span class="pedido-desc">Pendentes</span>
+                    </div>
+                </div>
+            </div>
+            <button class="kpi-card-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Ver todos pedidos
+            </button>
         </div>
- 
-        <div class="card card-kpi-pequeno">
-            <h3>Custos do Dia</h3>
+
+        <!-- ═══════════ CARD 4 — CUSTOS DO DIA ═══════════ -->
+        <div class="card card-kpi-pequeno card-custos">
+            <div class="kpi-card-header">
+                <div>
+                    <h3 class="kpi-card-titulo">Custos do Dia</h3>
+                    <p class="kpi-card-subtitulo">Últimas 24h</p>
+                </div>
+                <div class="kpi-card-icon icon-verde">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+            </div>
+            <div class="custo-total">R$ 45.280,50</div>
+            <div class="custo-itens">
+                <div class="custo-item">
+                    <div class="custo-icone">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#00cc2c" stroke-width="1.8"><path d="M3 22V8l9-6 9 6v14"/><path d="M12 22v-5"/><rect x="7" y="12" width="3" height="3"/><rect x="14" y="12" width="3" height="3"/></svg>
+                    </div>
+                    <div class="custo-detalhe">
+                        <span class="custo-nome">Combustível</span>
+                        <span class="custo-valor">R$ 32.650,20</span>
+                    </div>
+                </div>
+                <div class="custo-item">
+                    <div class="custo-icone">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffbb00" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                    </div>
+                    <div class="custo-detalhe">
+                        <span class="custo-nome">Pedágios</span>
+                        <span class="custo-valor">R$ 12.630,30</span>
+                    </div>
+                </div>
+            </div>
+            <button class="kpi-card-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Conciliar despesas
+            </button>
         </div>
  
         <div class="card card-kpis-geral">
@@ -334,62 +490,36 @@
     // ═══════════════════════════════════════════════════════════════
     // SISTEMA DE TOOLTIP — Portal para o <body>
     // Resolve overflow:hidden e z-index de containers pai.
-    // O tooltip é clonado e anexado ao body, posicionado via
-    // coordenadas fixas calculadas a partir do getBoundingClientRect()
-    // do pin, tornando-o completamente independente de qualquer container.
     // ═══════════════════════════════════════════════════════════════
-
-    let overlayAtivo = null; // referência ao overlay atual no DOM
+    let overlayAtivo = null;
 
     function fecharOverlay() {
         if (overlayAtivo) {
             overlayAtivo.classList.remove('visible');
-            // Aguarda transição antes de remover
             setTimeout(() => {
-                if (overlayAtivo && overlayAtivo.parentNode) {
-                    overlayAtivo.parentNode.removeChild(overlayAtivo);
-                }
+                if (overlayAtivo && overlayAtivo.parentNode) overlayAtivo.parentNode.removeChild(overlayAtivo);
                 overlayAtivo = null;
             }, 250);
         }
     }
 
     function abrirOverlay(pin) {
-        // Se já existe um overlay para este pin, não reabre
         if (overlayAtivo && overlayAtivo._pinOrigem === pin) return;
-
         fecharOverlay();
-
-        // Clona o conteúdo interno do tooltip-box original
         const boxOriginal = pin.querySelector('.tooltip-box');
         const overlay = document.createElement('div');
         overlay.className = 'tooltip-overlay';
-        overlay._pinOrigem = pin; // referência ao pin de origem
-
-        // Copia o conteúdo HTML interno (sem a seta original)
+        overlay._pinOrigem = pin;
         overlay.innerHTML = boxOriginal.innerHTML;
-
-        // Remove seta antiga vinda do clone, se houver
         const setaAntiga = overlay.querySelector('.tooltip-arrow');
         if (setaAntiga) setaAntiga.remove();
-
-        // Cria a seta do overlay
         const seta = document.createElement('div');
         seta.className = 'tooltip-arrow-overlay';
         overlay.appendChild(seta);
-
         document.body.appendChild(overlay);
         overlayAtivo = overlay;
-
-        // Posiciona o overlay usando as coordenadas reais na viewport
         posicionarOverlay(overlay, pin, seta);
-
-        // Pequeno delay para a transição de entrada funcionar
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => overlay.classList.add('visible'));
-        });
-
-        // Fechar ao sair do mouse do overlay
+        requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('visible')));
         overlay.addEventListener('mouseleave', () => fecharOverlay());
     }
 
@@ -397,65 +527,38 @@
         const rect = pin.getBoundingClientRect();
         const pinCentroX = rect.left + rect.width / 2;
         const pinCentroY = rect.top;
-
-        const TOOLTIP_H = 360;  // altura estimada do tooltip (ajuste se necessário)
-        const GAP = 14;         // espaço entre o pin e o tooltip
-
-        const espacoAcima = pinCentroY;
-        const abrirAcima = espacoAcima > TOOLTIP_H + GAP;
-
+        const TOOLTIP_H = 360, GAP = 14;
+        const abrirAcima = pinCentroY > TOOLTIP_H + GAP;
         if (abrirAcima) {
-            // Tooltip acima do pin
             overlay.style.top  = (pinCentroY - TOOLTIP_H - GAP) + 'px';
             overlay.style.left = pinCentroX + 'px';
-            seta.classList.add('arrow-top');   // seta aponta para baixo (em direção ao pin)
+            seta.classList.add('arrow-top');
         } else {
-            // Tooltip abaixo do pin
             overlay.style.top  = (rect.bottom + GAP) + 'px';
             overlay.style.left = pinCentroX + 'px';
-            seta.classList.add('arrow-bottom'); // seta aponta para cima (em direção ao pin)
+            seta.classList.add('arrow-bottom');
         }
-
-        // Garante que o overlay não saia da tela horizontalmente
         requestAnimationFrame(() => {
             const oRect = overlay.getBoundingClientRect();
-            if (oRect.right > window.innerWidth - 8) {
-                overlay.style.left = (pinCentroX - (oRect.right - window.innerWidth + 8)) + 'px';
-            }
-            if (oRect.left < 8) {
-                overlay.style.left = (8 + 135) + 'px'; // 135 = metade de 270 (largura do tooltip)
-            }
+            if (oRect.right > window.innerWidth - 8) overlay.style.left = (pinCentroX - (oRect.right - window.innerWidth + 8)) + 'px';
+            if (oRect.left < 8) overlay.style.left = (8 + 135) + 'px';
         });
     }
 
-    // Vincula cada pin ao sistema de overlay
     document.querySelectorAll('.pin-caminhao').forEach(pin => {
         const icon = pin.querySelector('.pin-info-icon');
-
-        // Desktop: hover no ícone ℹ
         icon.addEventListener('mouseenter', () => abrirOverlay(pin));
         icon.addEventListener('mouseleave', () => {
-            // Delay para não fechar ao mover o mouse para o overlay
-            setTimeout(() => {
-                if (overlayAtivo && !overlayAtivo.matches(':hover')) fecharOverlay();
-            }, 120);
+            setTimeout(() => { if (overlayAtivo && !overlayAtivo.matches(':hover')) fecharOverlay(); }, 120);
         });
-
-        // Mobile: clique no ícone
         icon.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (overlayAtivo && overlayAtivo._pinOrigem === pin) {
-                fecharOverlay();
-            } else {
-                abrirOverlay(pin);
-            }
+            if (overlayAtivo && overlayAtivo._pinOrigem === pin) fecharOverlay();
+            else abrirOverlay(pin);
         });
     });
 
-    // Clique fora fecha o overlay ativo
     document.addEventListener('click', () => fecharOverlay());
-
-    // Reposiciona o overlay ao redimensionar a janela
     window.addEventListener('resize', () => {
         if (overlayAtivo) {
             const pin = overlayAtivo._pinOrigem;
@@ -464,5 +567,7 @@
         }
     });
     </script>
+</body>
+</html>
 </body>
 </html>
